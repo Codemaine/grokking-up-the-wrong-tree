@@ -91,7 +91,9 @@ def _patch_hook_factory(direction: torch.Tensor, clean_act: torch.Tensor,
 
     def hook_fn(tensor, hook):
         # tensor: [batch, seq, d_model]; we only touch the final position
-        delta = corrupt_act - clean_act
+        clean_proj = (clean_act @ direction).unsqueeze(-1) * direction
+        corrupt_proj = (corrupt_act @ direction).unsqueeze(-1) * direction
+        delta = corrupt_proj - clean_proj
         tensor[:, -1, :] = tensor[:, -1, :] + delta
         return tensor
 
