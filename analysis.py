@@ -111,7 +111,7 @@ def dimensionality_comparison(records, n_heads: int = 1):
     """Prints participation ratio and effective rank, grouped by operation."""
     print("\n  Participation ratio / effective rank by operation "
           f"(heads={n_heads}):")
-    for op_name in ["Z53", "Q53", "C53"]:
+    for op_name in ["Z53", "Q53", "C53", "L53", "L53_assoc"]:
         vals = [r["participation_ratio"] for r in records
                 if r["operation"] == op_name and r["n_heads"] == n_heads]
         eff = [r["effective_rank"] for r in records
@@ -146,6 +146,8 @@ def main():
     for heads in heads_present:
         evaluate_comparison(records, "Z53", "Q53", "embedding_patch", heads)
         evaluate_comparison(records, "Z53", "C53", "embedding_patch", heads)
+        evaluate_comparison(records, "Z53", "L53", "embedding_patch", heads)
+        evaluate_comparison(records, "Z53", "L53_assoc", "embedding_patch", heads)
 
     print("\n" + "=" * 70)
     print("RESIDUAL-STREAM-PC1 PROTOCOL (corrected proxy)")
@@ -153,6 +155,8 @@ def main():
     for heads in heads_present:
         evaluate_comparison(records, "Z53", "Q53", "residual_patch", heads)
         evaluate_comparison(records, "Z53", "C53", "residual_patch", heads)
+        evaluate_comparison(records, "Z53", "L53", "residual_patch", heads)
+        evaluate_comparison(records, "Z53", "L53_assoc", "residual_patch", heads)
 
     print("\n" + "=" * 70)
     print("DIMENSIONALITY (Priority #2: distributed vs. concentrated)")

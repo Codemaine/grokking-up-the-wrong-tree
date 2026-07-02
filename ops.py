@@ -177,6 +177,8 @@ OPERATIONS = {
     "Z53": op_Z53,
     "Q53": op_Q53,
     "C53": make_op_C53(C53_DEFAULT_K),
+    "L53": op_L53,
+    "L53_assoc": op_L53_assoc,
 }
 
 
