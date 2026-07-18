@@ -23,7 +23,7 @@ pip install -r requirements.txt
 ## Replication Guide
 
 ### 1. The Pilot Study (Proxy Misalignment)
-To reproduce the finding from Section 4.2 that the `embedding-PC1` proxy can silently fail due to catapult dynamics, run:
+To reproduce the finding from Section 4.1 that the `embedding-PC1` proxy can silently fail due to catapult dynamics, run:
 ```bash
 python run_pilot_study.py --seeds 5
 ```
